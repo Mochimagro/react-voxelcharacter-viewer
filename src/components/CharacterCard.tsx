@@ -1,16 +1,24 @@
-import { Card, Text } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import type { Character } from "../types/character";
 
 type CharacterCardProps = {
   character: Character;
+  onSelect: (character: Character) => void;
 };
 
-export default function CharacterCard({ character }: CharacterCardProps) {
+export default function CharacterCard({
+  character,
+  onSelect,
+}: CharacterCardProps) {
   return (
-    <Card.Root variant="outline">
-      <Card.Body>
-        <Text>{character.fileName}</Text>
-      </Card.Body>
-    </Card.Root>
+    <Button
+      type="button"
+      variant="outline"
+      width="100%"
+      justifyContent="flex-start"
+      onClick={() => onSelect(character)}
+    >
+      {character.fileName}
+    </Button>
   );
 }
