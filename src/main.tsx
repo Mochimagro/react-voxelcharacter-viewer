@@ -1,13 +1,12 @@
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import { Canvas } from "@react-three/fiber";
-import { createWebGpuRenderer } from "./lib/createWebGpuRenderer.ts";
+import { StrictMode } from "react";
+import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
+import CharacterGrid from "./components/CharacterGrid";
 
 createRoot(document.getElementById("root")!).render(
-  <Canvas gl={createWebGpuRenderer}>
-    <mesh>
-      <boxGeometry />
-      <meshNormalMaterial />
-    </mesh>
-  </Canvas>,
+  <StrictMode>
+    <ChakraProvider value={defaultSystem}>
+      <CharacterGrid />
+    </ChakraProvider>
+  </StrictMode>,
 );
